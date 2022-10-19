@@ -1,5 +1,5 @@
 package com.fortlom.answer.domain.AnswerAggregate.entity.childentity;
-import com.fortlom.answer.domain.AnswerAggregate.entity.Answer;
+import com.fortlom.answer.domain.AnswerAggregate.entity.*;
 import com.fortlom.answer.domain.AnswerAggregate.valueobject.UserAccount;
 import lombok.*;
 
