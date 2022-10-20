@@ -52,6 +52,7 @@ public class premiumQualitiesSteps {
         eventResource.setName(name);
         Date date = new Date();
         eventResource.setReleasedDate(date);
+        eventResource.setTicketLink("https://www.facebook.com/");
     }
     @When("click on “Create and Post”")
     public void click_on_create_and_post() {
@@ -67,6 +68,7 @@ public class premiumQualitiesSteps {
         eventResource.setName(name);
         Date date = new Date();
         eventResource.setReleasedDate(date);
+        eventResource.setTicketLink("https://www.facebook.com/");
     }
 
     @Then("event will not be created")

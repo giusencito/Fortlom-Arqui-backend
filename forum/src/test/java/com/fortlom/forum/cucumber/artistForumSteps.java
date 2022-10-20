@@ -35,24 +35,17 @@ public class artistForumSteps {
     String password=UUID.randomUUID().toString().replace("-", "").substring(0,20);
     String Username=UUID.randomUUID().toString().replace("-", "").substring(0,20);
     boolean setr;
-    //http://localhost:8083/api/v1/forumservice/user/{{usersId}}/forums
     @Given("that the artist is in the {string} section")
-    public void that_the_artist_is_in_the_section(String string) {
-       url=url+"/api/v1/forumservice/";
-    }
+    public void that_the_artist_is_in_the_section(String string) {url=url+"/api/v1/forumservice/";}
     @Given("click on the “+” button")
-    public void click_on_the_button() {
-       url=url+"user/";
-    }
+    public void click_on_the_button() {url=url+"user/";}
     @When("correctly fill in the data")
     public void correctly_fill_in_the_data() {
         createForumResource.setForumname(Username);
         createForumResource.setForumdescription(password);
     }
     @When("click on “Create”")
-    public void click_on_create() {
-        url=url+"1/forums";
-    }
+    public void click_on_create() {url=url+"1/forums";}
     @Then("message of your forum created successfully will appear.")
     public void message_of_your_forum_created_successfully_will_appear() {
       restTemplate.postForObject(url,createForumResource, ForumResource.class);
@@ -62,25 +55,17 @@ public class artistForumSteps {
         createForumResource.setForumname(Username);
         createForumResource.setForumdescription(password);
     }
-
     @When("the forum name is used")
-    public void the_forum_name_is_used() {
-        url=url+"1/forums";
-    }
-
+    public void the_forum_name_is_used() {}
     @Then("message will not appear from your created forum.")
     public void message_will_not_appear_from_your_created_forum() {
-        restTemplate.postForObject(url,createForumResource, ForumResource.class);
-    }
+        restTemplate.postForObject(url,createForumResource, ForumResource.class);}
 
     @When("you have successfully created a forum")
     public void you_have_successfully_created_a_forum() {
-       setr= restTemplate.getForObject("http://localhost:8083/api/v1/forumservice/check/1",boolean.class);
-    }
+        setr= restTemplate.getForObject("http://localhost:8083/api/v1/forumservice/check/1",boolean.class);}
 
     @Then("your forum will appear in the list.")
-    public void your_forum_will_appear_in_the_list() {
-       assertEquals(setr,true);
-    }
+    public void your_forum_will_appear_in_the_list() {assertEquals(setr,true);}
 
 }
