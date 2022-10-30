@@ -50,15 +50,12 @@ public class AuthService {
         throw new Message("Error");
     }
 
-    public ResponseEntity<?> register(RegisterUser request, BindingResult bindingResult) throws Message {
+    public Admin register(RegisterUser request, BindingResult bindingResult) throws Message {
         if (bindingResult.hasErrors()){
-
-
-            return new ResponseEntity(new Message("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
+            throw new Message("campos mal puestos o email invalido");
         }
         if(adminService.existsByUsername(request.getUsername())){
-            return new ResponseEntity(new Message("ya existe nombre"), HttpStatus.BAD_REQUEST);
-
+            throw new Message("ya existe nombre");
         }
         Admin admin = new Admin();
         admin.setUsername(request.getUsername());
@@ -66,8 +63,7 @@ public class AuthService {
         Set<Rol> roles = new HashSet<>();
         roles.add(getrole());
         admin.setRoles(roles);
-        adminService.save(admin);
-        return new ResponseEntity(new Message("new fanatic saved"),HttpStatus.CREATED);
+        return admin;
 
     }
     public ResponseEntity<jwtDto>login(LoginUser loginUser, BindingResult bindingResult){

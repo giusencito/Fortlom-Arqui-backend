@@ -1,6 +1,7 @@
 package com.fortlom.administration.interfaces.controllers;
 import com.fortlom.administration.application.exception.Message;
 import com.fortlom.administration.application.service.AuthService;
+import com.fortlom.administration.domain.adminAgreegate.entity.Admin;
 import com.fortlom.administration.interfaces.dto.authetication.LoginUser;
 import com.fortlom.administration.interfaces.dto.authetication.RegisterUser;
 import com.fortlom.administration.interfaces.dto.authetication.jwtDto;
@@ -22,7 +23,7 @@ public class AuthController {
 
     @ApiOperation(value="register",notes = "Esta consulta nos ayuda a registrar")
     @PostMapping("/register")
-    public ResponseEntity<?> registerfanatic(@Valid @RequestBody RegisterUser request, BindingResult bindingResult) throws Message {
+    public Admin registerfanatic(@Valid @RequestBody RegisterUser request, BindingResult bindingResult) throws Message {
 
         return  authService.register(request,bindingResult);
 

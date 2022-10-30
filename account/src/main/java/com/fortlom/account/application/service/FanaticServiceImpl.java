@@ -107,7 +107,7 @@ public class FanaticServiceImpl implements FanaticService {
     public Fanatic banFanatic(Long artistId) {
         return fanaticRepository.findById(artistId).map(post->{
             Set<Rol> roles = new HashSet<>();
-            roles.add(rolService.findByName(Rolname.Role_Fanatic).get());
+            roles.add(rolService.findByName(Rolname.Role_Ban_Fanatic).get());
             post.setRoles(roles);
             fanaticRepository.save(post);
             return post;
