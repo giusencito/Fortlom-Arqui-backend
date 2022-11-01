@@ -1,4 +1,8 @@
 package com.fortlom.answer.cucumber;
+import com.fortlom.answer.interfaces.dto.ForumComment.CreateForumCommentResource;
+import com.fortlom.answer.interfaces.dto.ForumComment.ForumCommentResource;
+import com.fortlom.answer.interfaces.dto.PublicationComment.PublicationCommentResource;
+import com.fortlom.answer.interfaces.dto.PublicationComment.CreatePublicationCommentResource;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -29,72 +33,66 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 
 public class artistCommentSteps {
     private RestTemplate restTemplate = new RestTemplate();
-    //private CreateForum createComplaintResource= new CreateComplaintResource();
-    private String url = "http://localhost:8087";
+    private CreateForumCommentResource createForumCommentResource= new CreateForumCommentResource();
+    private CreatePublicationCommentResource createPublicationCommentResource= new CreatePublicationCommentResource();
+    private String url = "";
     @Given("that the artist is in the Posts section")
     public void that_the_artist_is_in_the_posts_section() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       url=url+"http://localhost:8084/api/v1/answerservice";
+
+
     }
     @Given("hit the see Posts button")
     public void hit_the_see_posts_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        url=url+"/user/1/publications/";
+
     }
     @When("choose a publication")
     public void choose_a_publication() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       url=url+"2";
     }
     @When("write what you want")
     public void write_what_you_want() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       createPublicationCommentResource.setCommentdescription("newest");
     }
     @When("hit the Post Comment button")
     public void hit_the_post_comment_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        url=url+"/publicationcomments";
     }
     @Then("your comment will be created successfully")
     public void your_comment_will_be_created_successfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+       restTemplate.postForObject(url,createPublicationCommentResource,PublicationCommentResource.class);
     }
     @Given("that the artist is in the Forum section")
     public void that_the_artist_is_in_the_forum_section() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        url=url+"http://localhost:8084/api/v1/answerservice";
     }
     @Given("choose a forum of your liking")
     public void choose_a_forum_of_your_liking() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        url=url+"/user/1/forums/";
     }
     @When("write what you want in the chosen forum")
     public void write_what_you_want_in_the_chosen_forum() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       createForumCommentResource.setCommentdescription("newest");
     }
     @When("hit the OK button")
     public void hit_the_ok_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        url=url+"1";
     }
     @Then("will output a message that the comment was successfully created.")
     public void will_output_a_message_that_the_comment_was_successfully_created() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        url=url+"/forumcomments";
+        restTemplate.postForObject(url,createForumCommentResource,ForumCommentResource.class);
     }
     @When("hit the See button")
     public void hit_the_see_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       url= "http://localhost:8084/api/v1/answerservice/publicationcomments";
     }
 
     @Then("you can view the comments of the publication")
     public void you_can_view_the_comments_of_the_publication() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        url= "http://localhost:8084/api/v1/answerservice/publicationcomments";
     }
 }
