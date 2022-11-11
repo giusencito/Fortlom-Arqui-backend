@@ -21,6 +21,7 @@ public interface ArtistService {
     Artist setInstagramAccount(Long artistId,Artist request);
     Artist setFacebookAccount(Long artistId,Artist request);
     Artist setTwitterAccount(Long artistId,Artist request);
+    Artist setAboutMe(Long artistId,Artist request);
     Optional<Artist>getbyUsernameOrEmail(String nameOremail);
     Artist create(Artist artist);
     boolean existsartist(Long artistId);

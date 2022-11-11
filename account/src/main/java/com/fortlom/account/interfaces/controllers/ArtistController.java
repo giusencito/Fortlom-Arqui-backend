@@ -88,6 +88,11 @@ public class ArtistController {
         return mapper.toResource(artistService.setInstagramAccount(artistId,mapper.toModel(request)));
 
     }
+    @PutMapping("/artist/{artistId}/AboutMe")
+    public ArtistResource updateAboutMe(@PathVariable Long artistId, @RequestBody UpdateArtistResource request){
+        return mapper.toResource(artistService.setAboutMe(artistId,mapper.toModel(request)));
+
+    }
     @DeleteMapping("{artistId}")
     public ResponseEntity<?> deletePost(@PathVariable Long artistId) {
         return artistService.delete(artistId);
